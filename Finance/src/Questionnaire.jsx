@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Questionnaire = () => {
   const [answers, setAnswers] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const questions = [
     {
@@ -87,12 +88,12 @@ const Questionnaire = () => {
     },
   ];
 
-
   const handleOptionChange = (questionId, option) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionId]: option,
     }));
+    setErrorMessage(''); // Reset error message when an option is selected
   };
 
   const handleSubmit = (e) => {
@@ -102,14 +103,20 @@ const Questionnaire = () => {
   };
 
   const handleNext = () => {
+    if (!answers[questions[currentQuestion].id]) {
+      setErrorMessage('Please select an answer before proceeding.');
+      return;
+    }
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setErrorMessage(''); // Clear error message when moving to the next question
     }
   };
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      setErrorMessage(''); // Clear error message when moving to the previous question
     }
   };
 
@@ -129,6 +136,14 @@ const Questionnaire = () => {
               style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
+
+          {/* Error message for missing answers */}
+          {errorMessage && (
+            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+              {errorMessage}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div key={questions[currentQuestion].id} className="mb-6">
               <p className="mb-4 text-lg font-medium text-gray-700">{questions[currentQuestion].question}</p>
