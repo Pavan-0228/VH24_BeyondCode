@@ -4,33 +4,54 @@ import { Input } from '../components/Input';
 import { Label } from '../components/Label';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { Button } from '../components/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can add logic for handling login, e.g., API call
-    // For now, just simulating a simple validation
-    if (!email || !password) {
-      setLoginError('Email and Password are required.');
-    } else {
-      setLoginError('');
-      // Simulate successful login
-      console.log('Logged in with:', { email, password });
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/auth/login', {
+        email,
+        password,
+      });
+
+      if (response.data.user) {
+        localStorage.setItem('accessToken', JSON.stringify(response.data.accessToken));
+        localStorage.setItem('username', response.data.user.username);
+        toast.success("Login successful! Redirecting...");
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message || 'An error occurred during login.');
+      } else if (error.request) {
+        toast.error('No response from server. Please try again.');
+      } else {
+        toast.error('An error occurred. Please try again.');
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <ToastContainer />
       <Card className="w-full max-w-md bg-gray-800 text-gray-100">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Login</CardTitle>
@@ -76,12 +97,12 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-            {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
             <Button 
               type="submit" 
               className="w-full bg-[#753efc] hover:bg-[#753efc] text-white"
+              disabled={isLoading}
             >
-              Sign In
+              {isLoading ? 'Signing In...' : 'Sign In'}
             </Button>
           </form>
           <div className="text-sm text-gray-400 text-center">

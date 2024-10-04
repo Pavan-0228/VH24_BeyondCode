@@ -23,14 +23,15 @@ const generateAccessTokenAndRefreshToken = async (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { fullName, email, password, username } = req.body;
+    const { fullName, email, password, username , age } = req.body;
 
     // Check if all fields are provided
     if (
         !fullName?.trim() ||
         !email?.trim() ||
         !password?.trim() ||
-        !username?.trim()
+        !username?.trim() ||
+        !age?.trim()
     ) {
         res.status(400);
         throw new Error("All fields are required");
@@ -46,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Create the new user
-    const user = await User.create({ fullName, email, password, username });
+    const user = await User.create({ fullName, email, password, username , age });
 
     if (!user) {
         return res.status(400).json({
@@ -54,15 +55,28 @@ const registerUser = asyncHandler(async (req, res) => {
         });
     }
 
+    const { accessToken, refreshToken } =
+        await generateAccessTokenAndRefreshToken(user._id);
+
     // Remove sensitive fields before sending response
     const userData = user.toObject();
     delete userData.password;
     delete userData.refreshToken;
 
-    res.status(201).json({
-        message: "User registered successfully",
-        user: userData,
-    });
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
+
+    return res
+        .status(200)
+        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken, options)
+        .json({
+            message: "User logged in successfully",
+            user: userData,
+            accessToken,
+        });
 });
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -155,4 +169,16 @@ const logoutUser = asyncHandler(async (req, res) => {
         });
 });
 
-export { registerUser, loginUser, logoutUser };
+
+const setInvestorType = asyncHandler( async (req, res ) => {
+    const { investorType } = req.body;
+    const user = await User.findById(req.user._id);
+    user.investorType = investorType;
+    await user.save();
+    res.status(200).json({
+        message: "Investor type set successfully",
+        user: user.toObject(),
+    });
+});
+
+export { registerUser, loginUser, logoutUser , setInvestorType };

@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import { verifyJWT } from '../middlewares/auth.middlewares.js';
-import { loginUser, logoutUser, registerUser } from '../conntroller/auth.controller.js';
+import { loginUser, logoutUser, registerUser, setInvestorType } from '../conntroller/auth.controller.js';
 
 
 const userRouter = Router();
@@ -8,6 +8,7 @@ const userRouter = Router();
 userRouter.route("/register").post(registerUser)
 userRouter.route("/login").post(loginUser)
 userRouter.route('/logout').get(verifyJWT, logoutUser)
+userRouter.route('/setInvestorType').put(verifyJWT, setInvestorType)
 
 
 export {userRouter}

@@ -32,6 +32,16 @@ const userShema = new mongoose.Schema(
         refreshToken: {
             type: String,
         },
+        age: {
+            type: String,
+            required: true,
+            index: true,
+        },
+        investorType:{
+            type: String,
+            trim: true,
+            index: true,
+        }
     },
 
     {
