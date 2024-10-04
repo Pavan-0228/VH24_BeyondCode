@@ -8,7 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import PortfolioSection from "./pages/PorfolioSection";
 import ResearchSection from "./pages/ResearchSection";
-
+import ReportingAndTransactionSection from "./pages/ReportingAndTransactionSection";
 
 
 
@@ -22,6 +22,8 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/stocks/:symbol" element={<StockData />} /> 
             <Route path="/research" element={<ResearchSection />} /> 
+            <Route path="/ReportingAndTransaction" element={<ReportingAndTransactionSection />} />
+            <Route path="/Portfolio" element={<PortfolioSection />} />
 
 
           </Routes>
