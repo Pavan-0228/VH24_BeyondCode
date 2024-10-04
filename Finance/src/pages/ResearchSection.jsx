@@ -9,6 +9,7 @@ const predefinedStocks = [
 const ResearchSection = () => {
   const [stocks, setStocks] = useState([]);
   const [news, setNews] = useState([]);
+  const [newsCategory, setNewsCategory] = useState("general");
   const scrollContainerRef = useRef(null);
 
   const fetchStockData = async () => {
@@ -29,16 +30,12 @@ const ResearchSection = () => {
     }
   };
 
-  const fetchNewsData = async () => {
+  const fetchNewsData = async (category) => {
     try {
-      const newsPromises = predefinedStocks.map((symbol) =>
-        axios.get(
-          `https://finnhub.io/api/v1/news?category=general&token=crvuorhr01qrbtrl55fgcrvuorhr01qrbtrl55g0`
-        )
+      const response = await axios.get(
+        `https://finnhub.io/api/v1/news?category=${category}&token=crvuorhr01qrbtrl55fgcrvuorhr01qrbtrl55g0`
       );
-      const responses = await Promise.all(newsPromises);
-      const allNews = responses.flatMap((response) => response.data);
-      setNews(allNews.slice(0, 10)); // Get the top 10 news articles
+      setNews(response.data.slice(0, 10)); // Get the top 10 news articles
     } catch (error) {
       console.error("Error fetching news data", error);
     }
@@ -46,8 +43,8 @@ const ResearchSection = () => {
 
   useEffect(() => {
     fetchStockData();
-    fetchNewsData();
-  }, []);
+    fetchNewsData(newsCategory);
+  }, [newsCategory]);
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -106,7 +103,20 @@ const ResearchSection = () => {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold mt-6 mb-4 text-white">Top 10 News</h2>
+      <div className="flex items-center justify-center mt-6 mb-4">
+        <h2 className="text-2xl font-bold text-white">Top 10 News</h2>
+        <select
+          className="bg-gray-800 text-white p-2 rounded-md"
+          value={newsCategory}
+          onChange={(e) => setNewsCategory(e.target.value)}
+        >
+          <option value="general">General</option>
+          <option value="forex">Forex</option>
+          <option value="crypto">Crypto</option>
+          <option value="merger">Merger</option>
+        </select>
+      </div>
+
       <div className="mt-4 space-y-4">
         {news.map((article, index) => (
           <div key={index} className="p-4 bg-gray-800 rounded-md shadow-md">
