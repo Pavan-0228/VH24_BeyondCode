@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Questionnaire = () => {
   const [answers, setAnswers] = useState({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const questions = [
     {
@@ -86,6 +87,7 @@ const Questionnaire = () => {
     },
   ];
 
+
   const handleOptionChange = (questionId, option) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -99,38 +101,89 @@ const Questionnaire = () => {
     // Handle form submission (e.g., send data to backend)
   };
 
+  const handleNext = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const progressPercentage = ((currentQuestion + 1) / questions.length) * 100;
+
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      {questions.map((q) => (
-        <div key={q.id} className="mb-6">
-          <p className="mb-4 text-lg font-medium text-gray-700">{q.question}</p>
-          <div className="space-y-2">
-            {q.options.map((option, index) => (
-              <label
-                key={index}
-                className="flex items-center space-x-2 text-gray-600"
-              >
-                <input
-                  type="radio"
-                  name={`question-${q.id}`}
-                  value={option}
-                  checked={answers[q.id] === option}
-                  onChange={() => handleOptionChange(q.id, option)}
-                  className="form-radio h-5 w-5 text-orange-500"
-                />
-                <span>{option}</span>
-              </label>
-            ))}
-          </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="w-full max-w-2xl bg-white shadow-xl rounded-xl overflow-hidden">
+        <div className="bg-blue-600 text-white p-6">
+          <h2 className="text-2xl font-bold">Financial Risk Assessment</h2>
+          <p className="text-blue-100">Question {currentQuestion + 1} of {questions.length}</p>
         </div>
-      ))}
-      <button
-        type="submit"
-        className="w-full py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600"
-      >
-        Submit
-      </button>
-    </form>
+        <div className="p-6">
+          <div className="mb-6 bg-gray-200 rounded-full h-2.5">
+            <div
+              className="bg-green-500 h-2.5 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div key={questions[currentQuestion].id} className="mb-6">
+              <p className="mb-4 text-lg font-medium text-gray-700">{questions[currentQuestion].question}</p>
+              <div className="grid grid-cols-2 gap-4">
+                {questions[currentQuestion].options.map((option, index) => (
+                  <label
+                    key={index}
+                    className="flex items-center space-x-2 p-3 border rounded-lg cursor-pointer transition-colors duration-200 ease-in-out hover:bg-blue-50"
+                  >
+                    <input
+                      type="radio"
+                      name={`question-${questions[currentQuestion].id}`}
+                      value={option}
+                      checked={answers[questions[currentQuestion].id] === option}
+                      onChange={() => handleOptionChange(questions[currentQuestion].id, option)}
+                      className="form-radio h-5 w-5 text-blue-600"
+                    />
+                    <span className="text-gray-700">{option}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-between mt-8">
+              <button
+                type="button"
+                onClick={handlePrevious}
+                disabled={currentQuestion === 0}
+                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50"
+              >
+                Previous
+              </button>
+              {currentQuestion < questions.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center"
+                >
+                  Next
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                >
+                  Submit
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
