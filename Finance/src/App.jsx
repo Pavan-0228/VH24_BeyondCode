@@ -3,12 +3,14 @@ import Sidebar from "./components/Sidebar";
 import Questionnaire from "./Questionnaire";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignPage";
+import StockCard from "./components/StockCard";
+import Watchlist from "./components/Watchlist";
 
 function App() {
   return (
     <Router>
       <div className="flex">
-        <Sidebar />
+        <Sidebar/>
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<h1>Home Page</h1>} />
@@ -22,6 +24,8 @@ function App() {
             <Route path="/Questionnaire" element={<Questionnaire />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage/>} />
+            <Route path="/StockCard" element={<StockCard/>} />
+            <Route path="/Watchlist" element={<Watchlist/>} />
           </Routes>
         </div>
       </div>
