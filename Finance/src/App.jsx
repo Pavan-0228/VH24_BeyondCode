@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Questionnaire from "./Questionnaire";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/help" element={<h1>Help</h1>} />
             <Route path="/Questionnaire" element={<Questionnaire />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage/>} />
           </Routes>
         </div>
       </div>
