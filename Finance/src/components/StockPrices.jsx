@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const StockPrices = () => {
+const StockPrices = ({ setStockSymbol }) => {
     const [stockPrices, setStockPrices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,6 +20,10 @@ const StockPrices = () => {
 
         fetchStockPrices();
     }, []);
+
+    const handleStockClick = (symbol) => {
+        setStockSymbol(symbol); // Update the symbol in Dashboard
+    };
 
     if (loading) {
         return <p className="text-blue-300">Loading...</p>;
@@ -42,7 +46,7 @@ const StockPrices = () => {
                     </thead>
                     <tbody>
                         {stockPrices.map((stock) => (
-                            <tr key={stock.symbol} className="hover:bg-gray-600">
+                            <tr key={stock.symbol} className="hover:bg-gray-600 cursor-pointer" onClick={() => handleStockClick(stock.symbol)}>
                                 <td className="py-2 px-4 border-b border-gray-600 text-gray-300">{stock.symbol}</td>
                                 <td className="py-2 px-4 border-b border-gray-600 text-gray-300">{stock.currentPrice}</td>
                             </tr>

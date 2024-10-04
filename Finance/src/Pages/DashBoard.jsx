@@ -6,7 +6,7 @@ import Research2 from './Research2';
 
 const Dashboard = () => {
     const [predictedPrice, setPredictedPrice] = useState(null);
-    const stockSymbol = 'TCS.NS';
+    const [stockSymbol, setStockSymbol] = useState('TCS.NS'); // Moved to Dashboard state
 
     return (
         <div className="p-4 bg-gray-900 text-white min-h-screen">
@@ -21,7 +21,7 @@ const Dashboard = () => {
                 )}
             </div>
             <div className='right-10 top-20 fixed border rounded-lg hover:border-blue-500 '>
-                <StockPrices />
+                <StockPrices setStockSymbol={setStockSymbol} /> {/* Pass setter to StockPrices */}
             </div>
             <div className='bottom-2 fixed'>
                 <Research2 />
