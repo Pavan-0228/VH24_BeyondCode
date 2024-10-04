@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Button } from "./components/Button"
-import { Input } from "./components/Input"
-import { Label } from "./components/Label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/Card"
-import { EyeIcon, EyeOffIcon } from './components/Icons'
+import { Input } from '../components/Input'
+import { Label } from '../components/Label'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { Button } from '../components/Button'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
