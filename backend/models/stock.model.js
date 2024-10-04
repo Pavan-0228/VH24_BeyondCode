@@ -49,14 +49,16 @@ stockSchema.statics.predict = function (trainedModel, inputData) {
         // Assuming the result is an array and the first element is the predicted change
         const predictedChange = result[0]; // Predicted change value
 
+        console.log(predictedChange);
         // Here you would typically need access to the last closing price
         // You'll need to pass this in or retrieve it in a way appropriate for your application
         const lastClosingPrice = inputData[inputData.length - 1][0]; // Assuming the last input feature array has closing price as the 4th element
 
         // Calculate the predicted price using the formula
-        const predictedPrice = lastClosingPrice + (lastClosingPrice * predictedChange); // Apply the formula
+        const predictedPrice =
+            lastClosingPrice + lastClosingPrice * predictedChange; // Apply the formula
 
-        return { success: true, predictedPrice: predictedPrice}; // Format to two decimal places
+        return { success: true, predictedPrice: predictedPrice.toFixed(2) }; // Format to two decimal places
     } catch (error) {
         console.error("Prediction Error:", error);
         return { success: false, error: error.message };

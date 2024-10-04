@@ -15,6 +15,7 @@ import ResearchSection from "./pages/ResearchSection";
 function App() {
   return (
     <Router>
+    <Navbar/>
       <div className="flex">
         <Sidebar />
         <div className="flex-1">
