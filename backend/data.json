@@ -1,0 +1,244 @@
+{
+    "stocks": [
+        {
+            "symbol": "RELIANCE.NS",
+            "data": {
+                "historical_prices": [
+                    {
+                        "date": "2024-09-25",
+                        "open": 2480,
+                        "high": 2510,
+                        "low": 2460,
+                        "close": 2500,
+                        "volume": 1500000
+                    },
+                    {
+                        "date": "2024-09-26",
+                        "open": 2500,
+                        "high": 2550,
+                        "low": 2480,
+                        "close": 2530,
+                        "volume": 1800000
+                    },
+                    {
+                        "date": "2024-09-27",
+                        "open": 2530,
+                        "high": 2570,
+                        "low": 2510,
+                        "close": 2550,
+                        "volume": 1600000
+                    },
+                    {
+                        "date": "2024-09-28",
+                        "open": 2550,
+                        "high": 2590,
+                        "low": 2530,
+                        "close": 2570,
+                        "volume": 1700000
+                    },
+                    {
+                        "date": "2024-09-29",
+                        "open": 2570,
+                        "high": 2610,
+                        "low": 2560,
+                        "close": 2600,
+                        "volume": 1800000
+                    }
+                ],
+                "market_cap": 150000000000
+            }
+        },
+        {
+            "symbol": "TCS.NS",
+            "data": {
+                "historical_prices": [
+                    {
+                        "date": "2024-09-25",
+                        "open": 3980,
+                        "high": 4000,
+                        "low": 3950,
+                        "close": 2690,
+                        "volume": 900000
+                    },
+                    {
+                        "date": "2024-09-26",
+                        "open": 3950,
+                        "high": 4030,
+                        "low": 3980,
+                        "close": 4020,
+                        "volume": 850000
+                    },
+                    {
+                        "date": "2024-09-27",
+                        "open": 4010,
+                        "high": 4060,
+                        "low": 4000,
+                        "close": 3200,
+                        "volume": 950000
+                    },
+                    {
+                        "date": "2024-09-28",
+                        "open": 40,
+                        "high": 4100,
+                        "low": 4030,
+                        "close": 4070,
+                        "volume": 1000000
+                    },
+                    {
+                        "date": "2024-09-29",
+                        "open": 400,
+                        "high": 4130,
+                        "low": 4060,
+                        "close": 1410,
+                        "volume": 1100000
+                    }
+                ],
+                "market_cap": 80000000000
+            }
+        },
+        {
+            "symbol": "INFY.NS",
+            "data": {
+                "historical_prices": [
+                    {
+                        "date": "2024-09-25",
+                        "open": 1500,
+                        "high": 1520,
+                        "low": 1480,
+                        "close": 1510,
+                        "volume": 750000
+                    },
+                    {
+                        "date": "2024-09-26",
+                        "open": 1510,
+                        "high": 1530,
+                        "low": 1500,
+                        "close": 1525,
+                        "volume": 770000
+                    },
+                    {
+                        "date": "2024-09-27",
+                        "open": 1525,
+                        "high": 1550,
+                        "low": 1510,
+                        "close": 1535,
+                        "volume": 800000
+                    },
+                    {
+                        "date": "2024-09-28",
+                        "open": 1535,
+                        "high": 1560,
+                        "low": 1520,
+                        "close": 1550,
+                        "volume": 820000
+                    },
+                    {
+                        "date": "2024-09-29",
+                        "open": 1550,
+                        "high": 1580,
+                        "low": 1540,
+                        "close": 1570,
+                        "volume": 850000
+                    }
+                ],
+                "market_cap": 70000000000
+            }
+        },
+        {
+            "symbol": "HDFC.NS",
+            "data": {
+                "historical_prices": [
+                    {
+                        "date": "2024-09-25",
+                        "open": 2800,
+                        "high": 2830,
+                        "low": 2780,
+                        "close": 2820,
+                        "volume": 1000000
+                    },
+                    {
+                        "date": "2024-09-26",
+                        "open": 2820,
+                        "high": 2850,
+                        "low": 2800,
+                        "close": 2840,
+                        "volume": 950000
+                    },
+                    {
+                        "date": "2024-09-27",
+                        "open": 2840,
+                        "high": 2880,
+                        "low": 2820,
+                        "close": 2860,
+                        "volume": 980000
+                    },
+                    {
+                        "date": "2024-09-28",
+                        "open": 2860,
+                        "high": 2900,
+                        "low": 2850,
+                        "close": 2880,
+                        "volume": 1020000
+                    },
+                    {
+                        "date": "2024-09-29",
+                        "open": 2880,
+                        "high": 2930,
+                        "low": 2870,
+                        "close": 2910,
+                        "volume": 1050000
+                    }
+                ],
+                "market_cap": 120000000000
+            }
+        },
+        {
+            "symbol": "ICICIBANK.NS",
+            "data": {
+                "historical_prices": [
+                    {
+                        "date": "2024-09-25",
+                        "open": 880,
+                        "high": 890,
+                        "low": 870,
+                        "close": 885,
+                        "volume": 2500000
+                    },
+                    {
+                        "date": "2024-09-26",
+                        "open": 885,
+                        "high": 900,
+                        "low": 880,
+                        "close": 890,
+                        "volume": 2400000
+                    },
+                    {
+                        "date": "2024-09-27",
+                        "open": 890,
+                        "high": 910,
+                        "low": 885,
+                        "close": 905,
+                        "volume": 2300000
+                    },
+                    {
+                        "date": "2024-09-28",
+                        "open": 905,
+                        "high": 920,
+                        "low": 900,
+                        "close": 915,
+                        "volume": 2200000
+                    },
+                    {
+                        "date": "2024-09-29",
+                        "open": 915,
+                        "high": 930,
+                        "low": 910,
+                        "close": 925,
+                        "volume": 2100000
+                    }
+                ],
+                "market_cap": 60000000000
+            }
+        }
+    ]
+}

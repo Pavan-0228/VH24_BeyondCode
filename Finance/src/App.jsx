@@ -2,10 +2,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import DashBoard from "./Pages/DashBoard";
 import StockData from "./components/StockData";
+import Questionnaire from "./Questionnaire";
+import LoginPage from "./pages/LoginPage";
+
+import Navbar from "./components/Navbar";
+
+
+
 
 function App() {
   return (
-    <RouterRouter>
+    <Router>
       <div className="flex">
         <Sidebar />
         <div className="flex-1">
@@ -15,8 +22,6 @@ function App() {
           </Routes>
         </div>
       </div>
-    </Router>
-  );
     </Router>
   );
 }
