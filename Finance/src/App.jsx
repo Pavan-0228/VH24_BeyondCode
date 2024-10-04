@@ -4,6 +4,8 @@ import Questionnaire from "./Questionnaire";
 import LoginPage from "./pages/LoginPage";
 
 import Navbar from "./components/Navbar";
+import PortfolioSection from "./pages/PorfolioSection";
+import ResearchSection from "./pages/ResearchSection";
 
 
 
@@ -26,6 +28,8 @@ function App() {
             <Route path="/Questionnaire" element={<Questionnaire />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<Navbar />} />
+            <Route path="/portfolio" element={<PortfolioSection />} />
+            <Route path="ResearchSection" element={<ResearchSection />} />
           
             
            

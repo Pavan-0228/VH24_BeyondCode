@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
           <div className="flex items-center">
-            <div className="text-white text-xl font-bold">MyBrand</div>
+            <div className="text-white text-xl font-bold"></div>
           </div>
 
           {/* Center Menu */}
@@ -27,7 +27,7 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="bg-gray-700 text-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="bg-gray-700 text-gray-300 px-1 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               />
             </div>
 
@@ -35,7 +35,7 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setProfileMenu(!profileMenu)}
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md focus:outline-none"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md focus:outline-none"
               >
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A4.992 4.992 0 0112 15a4.992 4.992 0 016.879 2.804M12 7a4 4 0 110-8 4 4 0 010 8zm0 6a5 5 0 00-5 5v1h10v-1a5 5 0 00-5-5z" />
