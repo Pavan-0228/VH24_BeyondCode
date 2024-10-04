@@ -25,6 +25,6 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
         next();
     } catch (error) {
         error.status = 401;
-        next(error);  // Pass error to global error handler
+        next(error);  
     }
 });

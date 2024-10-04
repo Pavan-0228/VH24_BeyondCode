@@ -63,8 +63,8 @@ export default function Sidebar() {
                             }`}
                     >
                         <div className="leading-4">
-                            <h4 className="font-semibold text-gray-200">constGenius</h4>
-                            <span className="text-xs text-gray-400">constgenius@gmail.com</span>
+                            <h4 className="font-semibold">{localStorage.getItem("username")}</h4>
+                            <span className="text-xs text-gray-600"></span>
                         </div>
                         <MoreVertical size={20} className="text-gray-300" />
                     </div>
