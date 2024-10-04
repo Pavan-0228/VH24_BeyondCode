@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage";
 
 import Navbar from "./components/Navbar";
 import PortfolioSection from "./pages/PorfolioSection";
-import ResearchSection from "./pages/ResearchSection";
+import ResearchSection from "./Pages/ResearchSection";
 
 
 
