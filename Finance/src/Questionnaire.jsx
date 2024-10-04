@@ -123,14 +123,14 @@ const Questionnaire = () => {
   const progressPercentage = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl bg-white shadow-xl rounded-xl overflow-hidden">
-        <div className="bg-blue-600 text-white p-6">
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
+      <div className="w-full max-w-2xl bg-gray-800 shadow-xl rounded-xl overflow-hidden">
+        <div className="bg-[#753efc] text-white p-6">
           <h2 className="text-2xl font-bold">Financial Risk Assessment</h2>
-          <p className="text-blue-100">Question {currentQuestion + 1} of {questions.length}</p>
+          <p className="text-gray-400">Question {currentQuestion + 1} of {questions.length}</p>
         </div>
         <div className="p-6">
-          <div className="mb-6 bg-gray-200 rounded-full h-2.5">
+          <div className="mb-6 bg-gray-600 rounded-full h-2.5">
             <div
               className="bg-green-500 h-2.5 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercentage}%` }}
@@ -146,12 +146,12 @@ const Questionnaire = () => {
 
           <form onSubmit={handleSubmit}>
             <div key={questions[currentQuestion].id} className="mb-6">
-              <p className="mb-4 text-lg font-medium text-gray-700">{questions[currentQuestion].question}</p>
+              <p className="mb-4 text-lg font-medium text-gray-200">{questions[currentQuestion].question}</p>
               <div className="grid grid-cols-2 gap-4">
                 {questions[currentQuestion].options.map((option, index) => (
                   <label
                     key={index}
-                    className="flex items-center space-x-2 p-3 border rounded-lg cursor-pointer transition-colors duration-200 ease-in-out hover:bg-blue-50"
+                  className="flex items-center space-x-2 p-3 border border-[#753efc] rounded-lg cursor-pointer transition-colors duration-200 ease-in-out hover:bg-gray-700"
                   >
                     <input
                       type="radio"
@@ -159,9 +159,9 @@ const Questionnaire = () => {
                       value={option}
                       checked={answers[questions[currentQuestion].id] === option}
                       onChange={() => handleOptionChange(questions[currentQuestion].id, option)}
-                      className="form-radio h-5 w-5 text-blue-600"
+                      className="form-radio h-5 w-5 text-[#753efc]"
                     />
-                    <span className="text-gray-700">{option}</span>
+                    <span className="text-gray-200">{option}</span>
                   </label>
                 ))}
               </div>
@@ -171,7 +171,7 @@ const Questionnaire = () => {
                 type="button"
                 onClick={handlePrevious}
                 disabled={currentQuestion === 0}
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50"
+                className="px-4 py-2 bg-gray-600 text-gray-300 rounded-lg hover:bg-gray-500 disabled:opacity-50"
               >
                 Previous
               </button>
@@ -179,7 +179,7 @@ const Questionnaire = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center"
+                  className="px-4 py-2 bg-[#753efc] text-white rounded-lg hover:bg-[#753efc] flex items-center"
                 >
                   Next
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
