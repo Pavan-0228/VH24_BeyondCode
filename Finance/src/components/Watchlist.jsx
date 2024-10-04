@@ -21,14 +21,14 @@ const Navbar = () => (
 );
 
 const StockCard = ({ stock }) => (
-  <div className="bg-green-600 rounded-lg p-4 w-64 text-white shadow-lg mx-2 transition-all duration-500 ease-in-out transform">
+  <div className="bg-green-600 square-lg p-4 w-64 text-white shadow-lg mx-2 transition-all duration-500 ease-in-out transform">
     <div className="flex justify-between items-center mb-4">
       <div className="flex items-center space-x-2">
-        <div className="bg-white rounded-full p-1">
+        <div className="bg-white rounded-full p-1 overflow-hidden">
           <img
             src={`https://logo.clearbit.com/${stock.name.toLowerCase()}.com`}
             alt={stock.name}
-            className="w-8 h-8"
+            className="w-8 h-8 rounded-full"
           />
         </div>
         <span className="font-bold">{stock.name}</span>
