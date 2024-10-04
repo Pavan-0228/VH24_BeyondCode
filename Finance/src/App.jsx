@@ -5,7 +5,7 @@ import StockData from "./components/StockData";
 
 function App() {
   return (
-    <Router>
+    <RouterRouter>
       <div className="flex">
         <Sidebar />
         <div className="flex-1">
@@ -15,6 +15,8 @@ function App() {
           </Routes>
         </div>
       </div>
+    </Router>
+  );
     </Router>
   );
 }
