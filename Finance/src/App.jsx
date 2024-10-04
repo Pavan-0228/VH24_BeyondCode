@@ -5,6 +5,7 @@ import Sidebar, { SidebarItem } from "./components/Sidebar"
 
 
 
+import Questionnaire from './Questionnaire'
 
 function App() {
 
