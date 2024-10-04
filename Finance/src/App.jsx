@@ -3,6 +3,11 @@ import Sidebar from "./components/Sidebar";
 import Questionnaire from "./Questionnaire";
 import LoginPage from "./pages/LoginPage";
 
+import Navbar from "./components/Navbar";
+
+
+
+
 function App() {
   return (
     <Router>
@@ -20,7 +25,14 @@ function App() {
             <Route path="/help" element={<h1>Help</h1>} />
             <Route path="/Questionnaire" element={<Questionnaire />} />
             <Route path="/login" element={<LoginPage />} />
-          </Routes>
+            <Route path="*" element={<Navbar />} />
+          
+            
+           
+          
+           
+            
+       </Routes>
         </div>
       </div>
     </Router>
