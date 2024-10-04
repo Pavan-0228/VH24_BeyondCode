@@ -11,38 +11,44 @@ import Navbar from "./components/Navbar";
 import PortfolioSection from "./pages/PorfolioSection";
 import ResearchSection from "./Pages/ResearchSection";
 import ReportingAndTransactionSection from "./Pages/ReportingAndTransactionSection";
+import UserProfile from "./components/UserProfile";
 
 // Custom Layout component to hide the Sidebar on specific routes
-function Layout({ children }) {
-  const location = useLocation();
+// function Layout({ children }) {
+//   const location = useLocation();
 
-  // Define routes where the Sidebar should not be displayed
-  const hideSidebarRoutes = ["/login", "/questionnaire", "/signup"];
+//   // Define routes where the Sidebar should not be displayed
+//   const hideSidebarRoutes = ["/login", "/questionnaire", "/signup"];
 
-  // Check if the current route is in the hideSidebarRoutes list
-  const hideSidebar = hideSidebarRoutes.includes(location.pathname);
+//   // Check if the current route is in the hideSidebarRoutes list
+//   const hideSidebar = hideSidebarRoutes.includes(location.pathname);
 
-  return (
-    <div className="flex">
-      {/* Conditionally render the Sidebar and Navbar */}
-      {!hideSidebar && (
-        <>
-          {/* <Navbar /> */}
-          <Sidebar />
-        </>
-      )}
+//   return (
+//     <div className="flex">
+//       {/* Conditionally render the Sidebar and Navbar */}
+//       {!hideSidebar && (
+//         <>
+//           {/* <Navbar /> */}
+//           {/* <Sidebar /> */}
+//         </>
+//       )}
 
-      {/* Main content */}
-      <div className="flex-1">{children}</div>
-    </div>
-  );
-}
+//       {/* Main content */}
+//       <div className="flex-1">{children}</div>
+//     </div>
+//   );
+// }
 
 function App() {
   return (
     <Router>
       <Navbar/>
-      <Layout>
+    <div className="flex">
+      <Sidebar/>
+      <div className="flex-1">
+
+      
+      {/* <Layout> */}
         <Routes>
           {/* Define routes here */}
           <Route path="/" element={<h1>Home Page</h1>} />
@@ -59,8 +65,13 @@ function App() {
           <Route path="/research" element={<ResearchSection />} />
           <Route path="/reporting-and-transaction" element={<ReportingAndTransactionSection />} />
           <Route path="/portfolio" element={<PortfolioSection />} />
+          <Route path="/mutualRecommend" element={<UserProfile userId={"66ffebb1d403629e535db3ca"} />} />
+
         </Routes>
-      </Layout>
+      {/* </Layout> */}
+      </div>
+    </div>
+      
     </Router>
   );
 }

@@ -1,0 +1,269 @@
+{
+    "SIPs": [
+        {
+            "investorType": "Very Conservative",
+            "funds": [
+                {
+                    "fundName": "HDFC Liquid Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "4-6%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "1-2 years",
+                    "description": "Liquid fund with low risk and stable returns."
+                },
+                {
+                    "fundName": "ICICI Prudential Overnight Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "3-5%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "Less than 1 year",
+                    "description": "Overnight fund ideal for parking surplus cash."
+                },
+                {
+                    "fundName": "Axis Ultra Short Term Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "5-6%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "1-2 years",
+                    "description": "Suitable for very short-term parking."
+                },
+                {
+                    "fundName": "SBI Savings Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "5-7%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "1-2 years",
+                    "description": "Low-risk fund focusing on savings accounts."
+                },
+                {
+                    "fundName": "Tata Treasury Advantage Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "5-7%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "1-2 years",
+                    "description": "Offers slightly better returns than fixed deposits."
+                },
+                {
+                    "fundName": "Edelweiss Liquid Fund",
+                    "riskLevel": "Low",
+                    "expectedReturn": "4-6%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "Less than 1 year",
+                    "description": "Liquid fund for conservative investors."
+                }
+            ]
+        },
+        {
+            "investorType": "Conservative",
+            "funds": [
+                {
+                    "fundName": "Kotak Short Term Fund",
+                    "riskLevel": "Low to Moderate",
+                    "expectedReturn": "6-8%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "1-3 years",
+                    "description": "Short-term fund with minimal risk."
+                },
+                {
+                    "fundName": "Aditya Birla Sun Life Corporate Bond Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "7-9%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "2-3 years",
+                    "description": "Focuses on corporate bonds for steady returns."
+                },
+                {
+                    "fundName": "ICICI Prudential Regular Savings Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "6-8%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Balanced risk-return ratio with regular savings."
+                },
+                {
+                    "fundName": "SBI Magnum Gilt Fund",
+                    "riskLevel": "Low to Moderate",
+                    "expectedReturn": "5-7%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "1-2 years",
+                    "description": "Invests in government securities with low risk."
+                },
+                {
+                    "fundName": "Axis Banking & PSU Debt Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "7-8%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Focuses on bonds from banks and public sector units."
+                },
+                {
+                    "fundName": "HDFC Short Term Debt Fund",
+                    "riskLevel": "Low to Moderate",
+                    "expectedReturn": "6-7%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "2-3 years",
+                    "description": "Debt fund for low-risk, conservative investors."
+                }
+            ]
+        },
+        {
+            "investorType": "Moderately Conservative",
+            "funds": [
+                {
+                    "fundName": "SBI Magnum Medium Duration Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-10%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Ideal for moderate-risk, mid-term investors."
+                },
+                {
+                    "fundName": "HDFC Corporate Bond Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "7-9%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Invests in high-quality corporate bonds."
+                },
+                {
+                    "fundName": "ICICI Prudential Balanced Advantage Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "9-11%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Balanced risk with growth potential."
+                },
+                {
+                    "fundName": "Franklin India Short Term Income Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-9%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Balanced income fund with moderate risk."
+                },
+                {
+                    "fundName": "Axis Regular Saver Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-10%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Aimed at moderate investors seeking regular savings."
+                },
+                {
+                    "fundName": "Aditya Birla Sun Life Equity Savings Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-10%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "3-5 years",
+                    "description": "Balanced approach with equity savings."
+                }
+            ]
+        },
+        {
+            "investorType": "Balanced",
+            "funds": [
+                {
+                    "fundName": "HDFC Balanced Advantage Fund",
+                    "riskLevel": "Moderate to High",
+                    "expectedReturn": "9-11%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Dynamic asset allocation for balanced returns."
+                },
+                {
+                    "fundName": "Kotak Balanced Advantage Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-10%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Moderate risk fund for balanced growth."
+                },
+                {
+                    "fundName": "ICICI Prudential Multi-Asset Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Invests in multiple asset classes for diversification."
+                },
+                {
+                    "fundName": "SBI Dynamic Asset Allocation Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-11%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Balanced risk fund for dynamic asset allocation."
+                },
+                {
+                    "fundName": "Aditya Birla Sun Life Balanced Advantage Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "9-11%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Balanced approach between equity and debt."
+                },
+                {
+                    "fundName": "Axis Equity Hybrid Fund",
+                    "riskLevel": "Moderate",
+                    "expectedReturn": "8-10%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "5-7 years",
+                    "description": "Hybrid fund combining equity and debt."
+                }
+            ]
+        },
+        {
+            "investorType": "Growth-Oriented",
+            "funds": [
+                {
+                    "fundName": "Mirae Asset Large Cap Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "7-10 years",
+                    "description": "Large cap fund with growth potential."
+                },
+                {
+                    "fundName": "SBI Bluechip Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "7-10 years",
+                    "description": "Focuses on large, established companies."
+                },
+                {
+                    "fundName": "Axis Bluechip Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "7-10 years",
+                    "description": "High-growth potential in large-cap equities."
+                },
+                {
+                    "fundName": "ICICI Prudential Bluechip Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "7-10 years",
+                    "description": "Growth-focused bluechip fund."
+                },
+                {
+                    "fundName": "Aditya Birla Sun Life Frontline Equity Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 1000,
+                    "recommendedDuration": "7-10 years",
+                    "description": "Top-rated fund in large-cap segment."
+                },
+                {
+                    "fundName": "HDFC Top 100 Fund",
+                    "riskLevel": "High",
+                    "expectedReturn": "10-12%",
+                    "minimumInvestment": 500,
+                    "recommendedDuration": "7-10 years",
+                    "description": "Invests in top 100 large-cap stocks."
+                }
+            ]
+        }
+    ]
+}

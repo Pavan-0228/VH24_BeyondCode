@@ -1,152 +1,217 @@
-// import { User } from "../models/user.model.js";
-// import { asyncHandler } from "../utils/asyncHandler.js";
+import { User } from "../models/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import fundsData from "../funds.json" assert { type: "json" };
 
-// const generateAccessTokenAndRefreshToken = async (userId) => {
-//     try {
-//         const user = await User.findById(userId);
+const generateAccessTokenAndRefreshToken = async (userId) => {
+    try {
+        const user = await User.findById(userId);
 
-//         // Generate access token and refresh token
-//         const accessToken = user.generateAccessToken();
-//         const refreshToken = user.generateRefreshToken();
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
 
-//         // Save the refresh token in the database
-//         user.refreshToken = refreshToken;
-//         await user.save({ validateBeforeSave: false });
+        // Save the refresh token in the database
+        user.refreshToken = refreshToken;
+        await user.save({ validateBeforeSave: false });
 
-//         return { accessToken, refreshToken };
-//     } catch (error) {
-//         throw new Error(
-//             500,
-//             "Something went wrong while generating referesh and access token"
-//         );
-//     }
-// };
+        return { accessToken, refreshToken };
+    } catch (error) {
+        throw new Error(
+            500,
+            "Something went wrong while generating referesh and access token"
+        );
+    }
+};
 
-// const registerUser = asyncHandler(async (req, res) => {
-//     const { fullName, email, password, username } = req.body;
+const registerUser = asyncHandler(async (req, res) => {
+    const { fullName, email, password, username , age } = req.body;
 
-//     // Check if all fields are provided
-//     if (
-//         !fullName?.trim() ||
-//         !email?.trim() ||
-//         !password?.trim() ||
-//         !username?.trim()
-//     ) {
-//         res.status(400);
-//         throw new Error("All fields are required");
-//     }
+    // Check if all fields are provided
+    if (
+        !fullName?.trim() ||
+        !email?.trim() ||
+        !password?.trim() ||
+        !username?.trim() ||
+        !age?.trim()
+    ) {
+        res.status(400);
+        throw new Error("All fields are required");
+    }
 
-//     // Check if user already exists
-//     const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    // Check if user already exists
+    const userExists = await User.findOne({ $or: [{ email }, { username }] });
 
-//     if (userExists) {
-//         res.status(400);
-//         throw new Error("User already exists");
-//     }
+    if (userExists) {
+        return res.status(400).json({
+            message: "User already exists",
+        });
+    }
 
-//     // Create the new user
-//     const user = await User.create({ fullName, email, password, username });
+    // Create the new user
+    const user = await User.create({ fullName, email, password, username , age });
 
-//     if (!user) {
-//         res.status(400);
-//         throw new Error("Invalid user data");
-//     }
+    if (!user) {
+        return res.status(400).json({
+            message: "Failed to register user",
+        });
+    }
 
-//     // Remove sensitive fields before sending response
-//     const userData = user.toObject();
-//     delete userData.password;
-//     delete userData.refreshToken;
+    const { accessToken, refreshToken } =
+        await generateAccessTokenAndRefreshToken(user._id);
 
-//     res.status(201).json({
-//         message: "User registered successfully",
-//         user: userData,
-//     });
-// });
+    // Remove sensitive fields before sending response
+    const userData = user.toObject();
+    delete userData.password;
+    delete userData.refreshToken;
 
-// const loginUser = asyncHandler(async (req, res) => {
-//     const { email, username, password } = req.body;
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
 
-//     // Check if all fields are provided
-//     if ((!email && !username) || !password) {
-//         res.status(400);
-//         throw new Error("All fields are required");
-//     }
+    return res
+        .status(200)
+        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken, options)
+        .json({
+            message: "User logged in successfully",
+            user: userData,
+            accessToken,
+        });
+});
 
-//     // Find user by email or username
-//     let user;
-//     if (email) {
-//         user = await User.findOne({ email });
-//         if (!user) {
-//             res.status(404);
-//             throw new Error("Email not found");
-//         }
-//     } else if (username) {
-//         user = await User.findOne({ username });
-//         if (!user) {
-//             res.status(404);
-//             throw new Error("Username not found");
-//         }
-//     }
+const loginUser = asyncHandler(async (req, res) => {
+    const { email, username, password } = req.body;
 
-//     // Check if password is correct
-//     const isPasswordCorrect = await user.checkPassword(password);
+    // Check if all fields are provided
+    if ((!email && !username) || !password) {
+        return res.status(400).json({
+            message: "All fields are required",
+        });
+    }
 
-//     if (!isPasswordCorrect) {
-//         res.status(401);
-//         throw new Error("Invalid credentials");
-//     }
+    // Find user by email or username
+    let user;
+    if (email) {
+        user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                message: "Email not found",
+            });
+        }
+    } else if (username) {
+        user = await User.findOne({ username });
+        if (!user) {
+            return res.status(404).json({
+                message: "Username not found",
+            });
+        }
+    }
 
-//     // Generate access token and refresh token
-//     const { accessToken, refreshToken } =
-//         await generateAccessTokenAndRefreshToken(user._id);
+    // Check if password is correct
+    const isPasswordCorrect = await user.checkPassword(password);
 
-//     // Remove sensitive fields before sending response
-//     const userData = user.toObject();
-//     delete userData.password;
-//     delete userData.refreshToken;
+    if (!isPasswordCorrect) {
+        return res.status(401).json({
+            message: "Invalid password"
+        });
+    }
 
-//     const options = {
-//         httpOnly: true,
-//         secure: true,
-//     };
+    // Generate access token and refresh token
+    const { accessToken, refreshToken } =
+        await generateAccessTokenAndRefreshToken(user._id);
 
-//     return res
-//         .status(200)
-//         .cookie("refreshToken", refreshToken, options)
-//         .cookie("accessToken", accessToken, options)
-//         .json({
-//             message: "User logged in successfully",
-//             user: userData,
-//             accessToken,
-//         });
-// });
+    // Remove sensitive fields before sending response
+    const userData = user.toObject();
+    delete userData.password;
+    delete userData.refreshToken;
+
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
+
+    return res
+        .status(200)
+        .cookie("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken, options)
+        .json({
+            message: "User logged in successfully",
+            user: userData,
+            accessToken,
+        });
+});
 
 
-// const logoutUser = asyncHandler(async (req, res) => {
-//     await User.findByIdAndUpdate(
-//         req?.user?._id,
-//         {
-//             $unset: {
-//                 refreshToken: 1,
-//             },
-//         },
-//         {
-//             new: true,
-//         }
-//     );
+const logoutUser = asyncHandler(async (req, res) => {
+    await User.findByIdAndUpdate(
+        req?.user?._id,
+        {
+            $unset: {
+                refreshToken: 1,
+            },
+        },
+        {
+            new: true,
+        }
+    );
 
-//     const options = {
-//         httpOnly: true,
-//         secure: true,
-//     };
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
 
-//     return res
-//         .status(200)
-//         .clearCookie("refreshToken", options)
-//         .clearCookie("accessToken", options)
-//         .json({
-//             message: "User logged out successfully",
-//         });
-// });
+    return res
+        .status(200)
+        .clearCookie("refreshToken", options)
+        .clearCookie("accessToken", options)
+        .json({
+            message: "User logged out successfully",
+        });
+});
 
-// export { registerUser, loginUser, logoutUser };
+
+const setInvestorType = asyncHandler( async (req, res ) => {
+    const { investorType } = req.body;
+    const user = await User.findById(req.user._id);
+    user.investorType = investorType;
+    await user.save();
+    res.status(200).json({
+        message: "Investor type set successfully",
+        user: user.toObject(),
+    });
+});
+
+
+
+
+export const getUserById = async (req, res) => {
+    try {
+        // Find the user by username
+        console.log(req.params.id);
+        const user = await User.findOne({_id: req.params.id });
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        // Filter funds based on user's investorType
+        const userFunds = fundsData.SIPs.find(
+            (fundCategory) => fundCategory.investorType === user.investorType
+        );
+
+        if (!userFunds)
+            return res
+                .status(404)
+                .json({ message: "No funds found for this investor type" });
+
+        // Respond with user details and relevant funds
+        res.json({
+            username: user.username,
+            email: user.email,
+            fullName: user.fullName,
+            investorType: user.investorType,
+            funds: userFunds.funds,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export { registerUser, loginUser, logoutUser , setInvestorType };
