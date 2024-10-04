@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Questionnaire from "./Questionnaire";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/settings" element={<h1>Settings</h1>} />
             <Route path="/help" element={<h1>Help</h1>} />
             <Route path="/Questionnaire" element={<Questionnaire />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>
       </div>
