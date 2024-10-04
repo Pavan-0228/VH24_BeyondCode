@@ -13,7 +13,7 @@ import {
     Settings,
     MoreVertical
 } from "lucide-react";
-import profile from "../../public/profile.png";
+import profile from "../profile.png";
 
 const SidebarContext = createContext();
 
@@ -64,7 +64,7 @@ export default function Sidebar() {
                     >
                         <div className="leading-4">
                             <h4 className="font-semibold">constGenius</h4>
-                            <span className="text-xs text-gray-600"></span>
+                            <span className="text-xs text-gray-600">constgenius@gmail.com</span>
                         </div>
                         <MoreVertical size={20} />
                     </div>
