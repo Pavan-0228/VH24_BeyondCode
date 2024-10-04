@@ -16,19 +16,19 @@ const trendyStocks = [
 
 const Navbar = () => (
   <nav className="w-full bg-gray-800 p-4 shadow-lg">
-    <h1 className="text-white text-center text-2xl font-bold">Trendy Stocks</h1>
+    <h1 className="text-white text-center text-2xl font-bold">TOP 10 TRENDY STOCKS</h1>
   </nav>
 );
 
 const StockCard = ({ stock }) => (
-  <div className="bg-green-600 rounded-lg p-4 w-64 text-white shadow-lg mx-2 transition-all duration-500 ease-in-out transform">
+  <div className="bg-green-600 square-lg p-4 w-64 text-white shadow-lg mx-2 transition-all duration-500 ease-in-out transform">
     <div className="flex justify-between items-center mb-4">
       <div className="flex items-center space-x-2">
-        <div className="bg-white rounded-full p-1">
+        <div className="bg-white rounded-full p-1 overflow-hidden">
           <img
             src={`https://logo.clearbit.com/${stock.name.toLowerCase()}.com`}
             alt={stock.name}
-            className="w-8 h-8"
+            className="w-8 h-8 rounded-full"
           />
         </div>
         <span className="font-bold">{stock.name}</span>
