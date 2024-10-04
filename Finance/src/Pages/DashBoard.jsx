@@ -1,6 +1,7 @@
 // Dashboard.js
 import React, { useState } from 'react';
 import HistoricalData from '../components/HistoricalData';
+import ResearchSection from './ResearchSection';
 
 const Dashboard = () => {
     const [predictedPrice, setPredictedPrice] = useState(null);
@@ -18,6 +19,7 @@ const Dashboard = () => {
                     </div>
                 )}
             </div>
+            <ResearchSection/>
         </div>
     );
 };

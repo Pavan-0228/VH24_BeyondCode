@@ -21,6 +21,9 @@ function App() {
           <Routes>
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/stocks/:symbol" element={<StockData />} /> 
+            <Route path="/research" element={<ResearchSection />} /> 
+
+
           </Routes>
         </div>
       </div>
