@@ -16,7 +16,7 @@ const trendyStocks = [
 
 const Navbar = () => (
   <nav className="w-full bg-gray-800 p-4 shadow-lg">
-    <h1 className="text-white text-center text-2xl font-bold">Trendy Stocks</h1>
+    <h1 className="text-white text-center text-2xl font-bold">TOP 10 TRENDY STOCKS</h1>
   </nav>
 );
 
