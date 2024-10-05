@@ -41,12 +41,14 @@ export default function SignUpPage() {
       [e.target.id]: e.target.value,
     });
   };
+  const backUrl = import.meta.env.VITE_APP_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (age >= 18) {
       try {
-        const response = await fetch('http://localhost:3000/api/v1/auth/register', {
+        const response = await fetch(`${backUrl}/api/v1/auth/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

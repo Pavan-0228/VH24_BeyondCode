@@ -241,9 +241,11 @@ const Questionnaire = () => {
     setRiskCategory(category);
     setShowResult(true);
 
+    const backUrl = import.meta.env.VITE_APP_URL;
+
 
     try {
-      const responses = await axios.put(`http://localhost:3000/api/v1/auth/setInvestorType`,{
+      const responses = await axios.put(`${backUrl}/api/v1/auth/setInvestorType`,{
         investorType: category.investorType
       },{
         headers: {

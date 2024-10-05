@@ -6,10 +6,13 @@ const StockPrices = ({ setStockSymbol }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const backUrl = import.meta.env.VITE_APP_URL;
+
+
     useEffect(() => {
         const fetchStockPrices = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/stock/current-prices');
+                const response = await axios.get(`${backUrl}/api/v1/stock/current-prices`);
                 setStockPrices(response.data.currentPrices);
             } catch (err) {
                 setError(err.message);

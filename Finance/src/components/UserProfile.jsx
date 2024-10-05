@@ -6,11 +6,14 @@ const UserProfile = ({ userId }) => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
+    const backUrl = import.meta.env.VITE_APP_URL;
+
+
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:3000/api/v1/auth/user/${userId}`);
+                const response = await axios.get(`${backUrl}/api/v1/auth/user/${userId}`);
                 setUserData(response.data);
             } catch (err) {
                 setError(err.response?.data?.message || 'An error occurred');

@@ -111,7 +111,7 @@ const ResearchSection = () => {
           onChange={(e) => setNewsCategory(e.target.value)}
         >
           <option value="general">General</option>
-          <option value="forex">Forex</option>
+          <option value="SIP">SIP</option>
           <option value="crypto">Crypto</option>
           <option value="merger">Merger</option>
         </select>

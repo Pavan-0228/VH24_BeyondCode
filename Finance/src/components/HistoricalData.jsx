@@ -11,10 +11,13 @@ const HistoricalData = ({ stockSymbol, setPredictedPrice }) => {
     const [historicalData, setHistoricalData] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const backUrl = import.meta.env.VITE_APP_URL;
+
+
     const fetchStockData = async () => {
         try {
-            const predictionResponse = await axios.post(`http://localhost:3000/api/v1/stock/predict/${stockSymbol}`);
-            const historicalResponse = await axios.get(`http://localhost:3000/api/v1/stock/getHistoricalData/${stockSymbol}`);
+            const predictionResponse = await axios.post(`${backUrl}/api/v1/stock/predict/${stockSymbol}`);
+            const historicalResponse = await axios.get(`${backUrl}/api/v1/stock/getHistoricalData/${stockSymbol}`);
 
             setHistoricalData(historicalResponse.data.data);
             setPredictedPrice(predictionResponse.data.prediction.predictedPrice);

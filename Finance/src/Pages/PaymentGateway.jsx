@@ -32,6 +32,10 @@ const stocks = [
 ];
 
 export default function StockPurchaseUI() {
+
+  const backUrl = import.meta.env.VITE_APP_URL;
+
+
     const [open, setOpen] = useState(true); // Default: closed
     const [isLoading, setIsLoading] = useState(false); // Loading state
     const [paymentError, setPaymentError] = useState(""); // Payment error state
@@ -44,7 +48,7 @@ export default function StockPurchaseUI() {
       try {
           // Step 1: Make a request to create the payment order
           const response = await axios.post(
-              `http://localhost:3000/api/v1/payment`,
+              `${backUrl}/api/v1/payment`,
               { amount: 1000 }, // Amount in rupees
               {
                   headers: {

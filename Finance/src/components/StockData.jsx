@@ -8,10 +8,12 @@ const StockData = () => {
     const [historicalData, setHistoricalData] = useState([]);
     const [predictedData, setPredictedData] = useState(null);
 
+    const backUrl = import.meta.env.VITE_APP_URL;
+
     useEffect(() => {
         const fetchHistoricalData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/stock/getHistoricalData/${symbol}`);
+                const response = await axios.get(`${backUrl}/api/v1/stock/getHistoricalData/${symbol}`);
                 if (response.data.success) {
                     setHistoricalData(response.data.data);
                 }
@@ -22,7 +24,7 @@ const StockData = () => {
 
         const fetchPredictedData = async () => {
             try {
-                const response = await axios.post(`http://localhost:3000/api/v1/stock/predict/${symbol}`, {
+                const response = await axios.post(`${backUrl}/api/v1/stock/predict/${symbol}`, {
                     // Include any necessary input data if required by your API
                 });
                 if (response.data.success) {

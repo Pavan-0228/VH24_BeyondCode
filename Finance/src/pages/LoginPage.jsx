@@ -16,6 +16,9 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const backUrl = import.meta.env.VITE_APP_URL;
+
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -25,7 +28,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/auth/login', {
+      const response = await axios.post(`${backUrl}/api/v1/auth/login`, {
         email,
         password,
       });

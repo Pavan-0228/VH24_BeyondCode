@@ -24,13 +24,18 @@ const stocks = [
     },
 ];
 
+
 function PaymentPage() {
+
+    const backUrl = import.meta.env.VITE_APP_URL;
+
+
     const handlePayment = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(
-                `http://localhost:3000/api/v1/payment`,
+                `${backUrl}/api/v1/payment`,
                 { amount: 225 }, 
                 {
                     headers: {
