@@ -12,6 +12,8 @@ import PortfolioSection from "./pages/PorfolioSection";
 import ResearchSection from "./Pages/ResearchSection";
 import ReportingAndTransactionSection from "./Pages/ReportingAndTransactionSection";
 import UserProfile from "./components/UserProfile";
+import StockPurchaseUI from "./pages/PaymentGateway";
+import PaymentPage from "./components/PaymentPage";
 
 // Custom Layout component to hide the Sidebar on specific routes
 // function Layout({ children }) {
@@ -66,6 +68,8 @@ function App() {
           <Route path="/reporting-and-transaction" element={<ReportingAndTransactionSection />} />
           <Route path="/portfolio" element={<PortfolioSection />} />
           <Route path="/mutualRecommend" element={<UserProfile userId={"66ffebb1d403629e535db3ca"} />} />
+          <Route path="/StockPurchaseUI" element={<StockPurchaseUI />} />
+          <Route path="/PaymentPage" element={<PaymentPage />} />
 
         </Routes>
       {/* </Layout> */}

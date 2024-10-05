@@ -16,7 +16,7 @@ var instance = new Razorpay({
 export const createOrder = async (req, res) => {
     const { amount } = req.body;
 
-    const currency = "INR";
+    const currency = "USD";
 
     try {
         const order = await instance.orders.create({

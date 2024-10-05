@@ -14,21 +14,19 @@ import {
 } from "lucide-react";
 
 const sidebarItems = [
-    { icon: <Home size={20} />, text: "Home", to: "/" },
     { icon: <LayoutDashboard size={20} />, text: "Dashboard", to: "/dashboard" },
     { icon: <StickyNote size={20} />, text: "Research", to: "/research" },
     { icon: <Calendar size={20} />, text: "Portfolio", to: "/portfolio" },
     { icon: <Layers size={20} />, text: "News", to: "/research" },
     { icon: <Flag size={20} />, text: "MutualFunds", to: "/mutualRecommend" },
-    { icon: <Settings size={20} />, text: "Settings", to: "/settings" },
-    { icon: <LifeBuoy size={20} />, text: "Help", to: "/help" }
+    { icon: <LifeBuoy size={20} />, text: "Payment", to: "/PaymentPage" }
 ];
 
 const Sidebar = () => {
     const [expanded, setExpanded] = useState(true);
 
     return (
-        <nav className="h-auto bg-gray-900 text-white">
+        <nav className="h-screen  bg-gray-900 text-white">
             <div className="p-4 flex justify-end ">
                 <button
                     onClick={() => setExpanded(!expanded)}

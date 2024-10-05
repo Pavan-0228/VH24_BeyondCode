@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,16 @@ const Navbar = () => {
                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                  <Link
+                    to='/signup'
+                    onClick={() => {
+                      setProfileMenu(!profileMenu);
+                      localStorage.clear();
+                    }}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Sign out
+                  </Link>
                 </div>
               )}
             </div>
@@ -65,8 +75,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-     
     </nav>
   );
 };
